@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload & Encrypt File</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/upload">Upload</a>
+    <a href="/download">Download</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Upload & Encrypt File</h2>
+      <p>Select a file to upload. The server will automatically use the stored public key for your account.</p>
+
+      <form id="uploadForm" enctype="multipart/form-data">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" >
+
+        <label for="file">Choose File</label>
+        <input id="file" name="file" type="file" required>
+
+        <button type="submit">Upload & Encrypt</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Secure File Manager</footer>
+
+  <!-- <script>
+  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fd = new FormData(form);
+
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
+      const data = await res.json();
+      const result = document.getElementById('result');
+      if (!res.ok) {
+        result.innerHTML = '<div class="error">' + (data.error || 'Upload failed') + '</div>';
+      } else {
+        result.innerHTML = '<div class="success">' + (data.message || 'Upload succeeded') + '</div>';
+      }
+    } catch (err) {
+      document.getElementById('result').innerHTML = '<div class="error">Network error</div>';
+    }
+  });
+  </script> -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

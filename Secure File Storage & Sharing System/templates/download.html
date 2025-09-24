@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Download & Decrypt File</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/upload">Upload</a>
+    <a href="/download">Download</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Download & Decrypt File</h2>
+      <p>Select an encrypted file and the server will fetch your encrypted private key, decrypt it with your password, then decrypt the file.</p>
+
+      <form id="downloadForm">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+
+        <label for="filename">Filename (from uploads folder, e.g. mydoc.txt.enc)</label>
+        <input id="filename" name="filename" type="text" required>
+
+        <button type="submit">Download & Decrypt</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Secure File Manager</footer>
+
+  <!-- <script>
+  async function downloadBlobAsFile(blob, filename) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('downloadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const filename = document.getElementById('filename').value.trim();
+
+    const fd = new FormData();
+    fd.append('username', username);
+    fd.append('password', password);
+
+    const result = document.getElementById('result');
+    result.innerHTML = '';
+
+    try {
+      const res = await fetch('/api/download/' + encodeURIComponent(filename), {
+        method: 'POST',
+        body: fd
+      });
+
+      if (!res.ok) {
+        // server returns JSON error
+        let errJson;
+        try { errJson = await res.json(); } catch(e) { errJson = null; }
+        result.innerHTML = '<div class="error">' + ((errJson && errJson.error) || 'Download failed') + '</div>';
+        return;
+      }
+
+      const blob = await res.blob();
+      const outName = filename.replace(/\.enc$/, '') || 'download';
+      downloadBlobAsFile(blob, outName);
+      result.innerHTML = '<div class="success">Download started</div>';
+    } catch (err) {
+      result.innerHTML = '<div class="error">Network error</div>';
+    }
+  });
+  </script> -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

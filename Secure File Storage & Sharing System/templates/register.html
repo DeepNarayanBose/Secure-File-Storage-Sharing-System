@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Secure Store</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/upload">Upload</a>
+    <a href="/download">Download</a>
+    <a href="/share">Share</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Create Account</h2>
+      <form id="registerForm">
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Register</button>
+      </form>
+      <div id="qr-section"></div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Secure Store | Security First
+  </footer>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Store - Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/upload">Upload</a>
+    <a href="/download">Download</a>
+    <a href="/share">Share</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>🔐 Secure Store</h2>
+      <p>Safely upload, encrypt, download, and share your files with advanced AES + RSA security.</p>
+      <p>Use Google Authenticator for extra protection.</p>
+      <button onclick="window.location.href='/register'">Get Started</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Secure Store | Developed with 🔒 Security First
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  
+</body>
+</html>
